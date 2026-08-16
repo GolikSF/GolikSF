@@ -2,23 +2,29 @@ document.addEventListener("DOMContentLoaded", () => {
   const root = document.documentElement;
   const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  /* ---------------- Mobile nav ---------------- */
-  const navToggle = document.getElementById("navToggle");
-  const navLinks = document.getElementById("navLinks");
+  /* ---------------- Sticky nav blur ---------------- */
+  const nav = document.getElementById("nav");
+  const updateNavState = () => nav.classList.toggle("scrolled", window.scrollY > 40);
+  window.addEventListener("scroll", updateNavState, { passive: true });
+  updateNavState();
 
-  navToggle.addEventListener("click", () => {
-    const isOpen = navLinks.classList.toggle("open");
-    navToggle.classList.toggle("active", isOpen);
-    navToggle.setAttribute("aria-expanded", String(isOpen));
-  });
+  /* ---------------- Mobile menu ---------------- */
+  const menuToggle = document.getElementById("menuToggle");
+  const menuClose = document.getElementById("menuClose");
+  const mobileMenu = document.getElementById("mobileMenu");
 
-  navLinks.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("click", () => {
-      navLinks.classList.remove("open");
-      navToggle.classList.remove("active");
-      navToggle.setAttribute("aria-expanded", "false");
-    });
-  });
+  const openMenu = () => {
+    mobileMenu.classList.add("open");
+    menuToggle.setAttribute("aria-expanded", "true");
+  };
+  const closeMenu = () => {
+    mobileMenu.classList.remove("open");
+    menuToggle.setAttribute("aria-expanded", "false");
+  };
+
+  menuToggle.addEventListener("click", openMenu);
+  menuClose.addEventListener("click", closeMenu);
+  mobileMenu.querySelectorAll("a").forEach((link) => link.addEventListener("click", closeMenu));
 
   /* ---------------- Bitcoin live ticker ---------------- */
   const SIMPLE_PRICE_URL =
@@ -88,8 +94,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!chartState.lastUpdateAt) return;
     const secs = Math.max(0, Math.round((Date.now() - chartState.lastUpdateAt) / 1000));
     const ago = secs < 2 ? "just now" : secs < 60 ? `${secs}s ago` : `${Math.round(secs / 60)}m ago`;
-    const prefix =
-      chartState.mode === "live" ? "Live feed" : "Demo data — live feed unavailable right now";
+    const prefix = chartState.mode === "live" ? "Live feed" : "Simulated data — live feed unavailable right now";
     btcUpdatedEl.textContent = `${prefix} · updated ${ago}`;
   };
 
@@ -98,7 +103,7 @@ document.addEventListener("DOMContentLoaded", () => {
     chartState.lastUpdateAt = Date.now();
     liveBadge.classList.toggle("is-live", mode === "live");
     liveBadge.classList.toggle("is-demo", mode === "demo");
-    liveLabel.textContent = mode === "live" ? "LIVE" : "DEMO DATA";
+    liveLabel.textContent = mode === "live" ? "Live" : "Simulated";
     tickAgo();
   };
 
@@ -131,17 +136,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const min = Math.min(...prices);
     const max = Math.max(...prices);
-    const pad = (max - min) * 0.15 || max * 0.01;
+    const pad = (max - min) * 0.18 || max * 0.01;
     const lo = min - pad;
     const hi = max + pad;
     const stepX = prices.length > 1 ? w / (prices.length - 1) : w;
     const toY = (price) => h - ((price - lo) / (hi - lo || 1)) * h;
 
     const isUp = prices[prices.length - 1] >= prices[0];
-    const lineColor = getCssVar(isUp ? "--green" : "--red") || (isUp ? "#33d17a" : "#ff5f56");
+    const lineColor = getCssVar(isUp ? "--green" : "--red") || (isUp ? "#1e8e5a" : "#c0392b");
 
     const grad = ctx.createLinearGradient(0, 0, 0, h);
-    grad.addColorStop(0, hexToRgba(lineColor, 0.3));
+    grad.addColorStop(0, hexToRgba(lineColor, 0.25));
     grad.addColorStop(1, hexToRgba(lineColor, 0));
 
     ctx.beginPath();
@@ -165,7 +170,7 @@ document.addEventListener("DOMContentLoaded", () => {
       else ctx.lineTo(x, y);
     });
     ctx.strokeStyle = lineColor;
-    ctx.lineWidth = 2;
+    ctx.lineWidth = 2.5;
     ctx.lineJoin = "round";
     ctx.lineCap = "round";
     ctx.stroke();
@@ -173,7 +178,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const lastX = (prices.length - 1) * stepX;
     const lastY = toY(prices[prices.length - 1]);
     ctx.beginPath();
-    ctx.arc(lastX, lastY, 4, 0, Math.PI * 2);
+    ctx.arc(lastX, lastY, 4.5, 0, Math.PI * 2);
     ctx.fillStyle = lineColor;
     ctx.fill();
   }
@@ -242,7 +247,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const effectiveTheme = () =>
     root.getAttribute("data-theme") ||
-    (window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
+    (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
 
   const applyTheme = (theme) => {
     root.setAttribute("data-theme", theme);
@@ -258,26 +263,40 @@ document.addEventListener("DOMContentLoaded", () => {
     store.set(next);
   });
 
-  /* ---------------- Hero typing effect ---------------- */
-  const typedName = document.getElementById("typedName");
-  const heroCursor = document.getElementById("heroCursor");
-  const fullName = "Golik SF";
+  /* ---------------- Skill rings ---------------- */
+  const RING_R = 50;
+  const RING_C = 2 * Math.PI * RING_R;
 
-  if (prefersReducedMotion) {
-    typedName.textContent = fullName;
-  } else {
-    let i = 0;
-    const type = () => {
-      typedName.textContent = fullName.slice(0, i);
-      i += 1;
-      if (i <= fullName.length) {
-        setTimeout(type, 90);
-      } else {
-        heroCursor.style.marginLeft = "2px";
-      }
+  document.querySelectorAll(".ring-progress").forEach((circle) => {
+    circle.style.strokeDasharray = `${RING_C} ${RING_C}`;
+    circle.style.strokeDashoffset = String(RING_C);
+  });
+
+  const animateRing = (card) => {
+    const progress = card.querySelector(".ring-progress");
+    const valueEl = card.querySelector(".ring-value");
+    const level = parseFloat(progress.dataset.level);
+    const target = parseFloat(valueEl.dataset.value);
+
+    requestAnimationFrame(() => {
+      progress.style.strokeDashoffset = String(RING_C - (RING_C * level) / 100);
+    });
+
+    if (prefersReducedMotion) {
+      valueEl.textContent = `${target}%`;
+      return;
+    }
+
+    const duration = 1300;
+    const start = performance.now();
+    const step = (now) => {
+      const t = Math.min(1, (now - start) / duration);
+      const eased = 1 - Math.pow(1 - t, 3);
+      valueEl.textContent = `${Math.round(target * eased)}%`;
+      if (t < 1) requestAnimationFrame(step);
     };
-    setTimeout(type, 400);
-  }
+    requestAnimationFrame(step);
+  };
 
   /* ---------------- Scroll reveal ---------------- */
   const observer = new IntersectionObserver(
@@ -285,15 +304,12 @@ document.addEventListener("DOMContentLoaded", () => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add("in-view");
-          entry.target.querySelectorAll(".skill-row").forEach((row) => row.classList.add("animate"));
-          entry.target.querySelectorAll(".skill-value").forEach((el) => {
-            el.textContent = el.dataset.value;
-          });
+          entry.target.querySelectorAll(".ring-card").forEach(animateRing);
           observer.unobserve(entry.target);
         }
       });
     },
-    { threshold: 0.15 }
+    { threshold: 0.2 }
   );
 
   document.querySelectorAll(".reveal").forEach((section) => observer.observe(section));
@@ -341,7 +357,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (copied) {
       const original = copyLabel.textContent;
-      copyLabel.textContent = "copied!";
+      copyLabel.textContent = "Copied!";
       showToast("Email copied to clipboard ✓");
       setTimeout(() => {
         copyLabel.textContent = original;

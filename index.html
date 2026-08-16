@@ -5,171 +5,211 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Golik SF | Portfolio</title>
   <meta name="description" content="Personal portfolio of Golik SF — developer, learner, and builder. Featuring a live Bitcoin ticker." />
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230a0e14'/%3E%3Ctext x='50' y='66' font-family='monospace' font-size='54' font-weight='700' fill='%23f7931a' text-anchor='middle'%3E%3E_%3C/text%3E%3C/svg%3E" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='26' fill='%23111'/%3E%3Ctext x='50' y='68' font-family='-apple-system,Helvetica,Arial,sans-serif' font-size='54' font-weight='700' fill='%23E8B84B' text-anchor='middle'%3EG%3C/text%3E%3C/svg%3E" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header class="chrome-bar">
-    <div class="chrome-dots" aria-hidden="true"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span></div>
-    <a href="#top" class="chrome-path">~/goliksf <span class="chrome-branch">‹main›</span></a>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="var(--accent-2)" />
+        <stop offset="100%" stop-color="var(--accent)" />
+      </linearGradient>
+    </defs>
+  </svg>
 
-    <nav class="chrome-nav" id="navLinks">
-      <a href="#about">about.md</a>
-      <a href="#skills">skills.json</a>
-      <a href="#btc">btc-ticker.sh</a>
-      <a href="#contact">contact.sh</a>
-    </nav>
+  <nav class="nav" id="nav">
+    <a href="#top" class="wordmark">
+      <span class="monogram" aria-hidden="true">G</span>
+      Golik&nbsp;SF
+    </a>
 
-    <div class="chrome-actions">
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#btc">Bitcoin</a>
+      <a href="#contact">Contact</a>
+    </div>
+
+    <div class="nav-actions">
       <button class="icon-btn" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">◐</button>
-      <button class="icon-btn nav-toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false">
-        <span></span><span></span><span></span>
+      <button class="icon-btn menu-btn" id="menuToggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span>
       </button>
     </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="icon-btn close-btn" id="menuClose" aria-label="Close menu">✕</button>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#btc">Bitcoin</a>
+    <a href="#contact">Contact</a>
+  </div>
+
+  <header class="hero" id="top">
+    <div class="hero-glow hero-glow--a" aria-hidden="true"></div>
+    <div class="hero-glow hero-glow--b" aria-hidden="true"></div>
+
+    <div class="hero-inner">
+      <p class="eyebrow">Portfolio</p>
+      <h1 class="hero-title">Golik SF</h1>
+      <p class="hero-sub">A curious mind learning to code — and build beautiful, useful things.</p>
+      <div class="hero-cta">
+        <a href="#about" class="btn btn-primary">About me</a>
+        <a href="#contact" class="btn btn-secondary">Get in touch</a>
+      </div>
+    </div>
+
+    <a href="#about" class="scroll-cue" aria-label="Scroll to About section">
+      <span></span>
+    </a>
   </header>
 
   <main>
-    <section class="hero" id="top">
-      <div class="hero-glow" aria-hidden="true"></div>
-      <div class="terminal-window hero-window">
-        <div class="terminal-titlebar">
-          <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
-          <span class="terminal-title">zsh — 80×24</span>
-        </div>
-        <div class="terminal-body">
-          <p class="prompt-line"><span class="prompt-user">guyk@portfolio</span><span class="prompt-path">~</span><span class="prompt-sign">%</span> whoami</p>
-          <h1 class="hero-name"><span id="typedName"></span><span class="cursor" id="heroCursor" aria-hidden="true">▍</span></h1>
-          <p class="prompt-comment"># A curious mind learning to code and build nice products.</p>
-          <div class="hero-actions">
-            <a href="#about" class="term-btn term-btn--solid">./about.sh</a>
-            <a href="#contact" class="term-btn term-btn--ghost">./contact.sh</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <section id="about" class="section reveal">
-      <div class="container">
-        <article class="panel">
-          <div class="panel-header">
-            <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
-            <span class="panel-filename">about.md</span>
-          </div>
-          <div class="panel-body about-body">
-            <div class="avatar-block" aria-hidden="true">👋</div>
-            <div class="about-copy">
-              <p>
-                I'm currently learning to code and exploring what it takes to build genuinely
-                useful, well-crafted software. I enjoy figuring out how things work under the
-                hood and turning ideas into small, working projects.
-              </p>
-              <p>
-                I'm looking to collaborate on nice products with people who care about quality
-                and creativity. When I'm not coding, I'm probably reading about the next thing
-                I want to learn — or watching the market below.
-              </p>
-            </div>
-          </div>
-        </article>
+      <div class="wrap-narrow">
+        <p class="eyebrow">About</p>
+        <p class="lede">
+          I enjoy figuring out how things work under the hood — and turning small
+          ideas into things that actually work.
+        </p>
+        <p class="body-text">
+          I'm currently learning to code and exploring what it takes to build genuinely
+          useful, well-crafted software. When I'm not coding, I'm probably reading about
+          the next thing I want to learn, or keeping an eye on the market below.
+        </p>
+        <p class="body-text">
+          I'm looking to collaborate with people who care about quality and craft —
+          on products that feel as good to use as they are useful.
+        </p>
       </div>
     </section>
 
-    <section id="skills" class="section reveal">
-      <div class="container">
-        <article class="panel">
-          <div class="panel-header">
-            <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
-            <span class="panel-filename">skills.json</span>
+    <section id="skills" class="section alt-bg reveal">
+      <div class="wrap">
+        <p class="eyebrow center">Skills</p>
+        <h2 class="section-title center">What I bring to the table</h2>
+
+        <div class="rings-grid">
+          <div class="ring-card">
+            <div class="ring-visual">
+              <svg viewBox="0 0 120 120" class="ring">
+                <circle class="ring-track" cx="60" cy="60" r="50" />
+                <circle class="ring-progress" cx="60" cy="60" r="50" data-level="80" />
+              </svg>
+              <span class="ring-value" data-value="80">0%</span>
+            </div>
+            <span class="ring-label">HTML</span>
           </div>
-          <div class="panel-body">
-            <p class="code-punct">{</p>
-            <ul class="skills-list">
-              <li class="skill-row">
-                <span class="skill-key">"html"</span><span class="code-punct">:</span>
-                <div class="skill-track"><div class="skill-fill" style="--level:80%"></div></div>
-                <span class="skill-value" data-value="80"></span>
-              </li>
-              <li class="skill-row">
-                <span class="skill-key">"css"</span><span class="code-punct">:</span>
-                <div class="skill-track"><div class="skill-fill" style="--level:75%"></div></div>
-                <span class="skill-value" data-value="75"></span>
-              </li>
-              <li class="skill-row">
-                <span class="skill-key">"javascript"</span><span class="code-punct">:</span>
-                <div class="skill-track"><div class="skill-fill" style="--level:65%"></div></div>
-                <span class="skill-value" data-value="65"></span>
-              </li>
-              <li class="skill-row">
-                <span class="skill-key">"problemSolving"</span><span class="code-punct">:</span>
-                <div class="skill-track"><div class="skill-fill" style="--level:85%"></div></div>
-                <span class="skill-value" data-value="85"></span>
-              </li>
-              <li class="skill-row">
-                <span class="skill-key">"collaboration"</span><span class="code-punct">:</span>
-                <div class="skill-track"><div class="skill-fill" style="--level:90%"></div></div>
-                <span class="skill-value" data-value="90"></span>
-              </li>
-              <li class="skill-row">
-                <span class="skill-key">"fastLearning"</span><span class="code-punct">:</span>
-                <div class="skill-track"><div class="skill-fill" style="--level:95%"></div></div>
-                <span class="skill-value" data-value="95"></span>
-              </li>
-            </ul>
-            <p class="code-punct">}</p>
+
+          <div class="ring-card">
+            <div class="ring-visual">
+              <svg viewBox="0 0 120 120" class="ring">
+                <circle class="ring-track" cx="60" cy="60" r="50" />
+                <circle class="ring-progress" cx="60" cy="60" r="50" data-level="75" />
+              </svg>
+              <span class="ring-value" data-value="75">0%</span>
+            </div>
+            <span class="ring-label">CSS</span>
           </div>
-        </article>
+
+          <div class="ring-card">
+            <div class="ring-visual">
+              <svg viewBox="0 0 120 120" class="ring">
+                <circle class="ring-track" cx="60" cy="60" r="50" />
+                <circle class="ring-progress" cx="60" cy="60" r="50" data-level="65" />
+              </svg>
+              <span class="ring-value" data-value="65">0%</span>
+            </div>
+            <span class="ring-label">JavaScript</span>
+          </div>
+
+          <div class="ring-card">
+            <div class="ring-visual">
+              <svg viewBox="0 0 120 120" class="ring">
+                <circle class="ring-track" cx="60" cy="60" r="50" />
+                <circle class="ring-progress" cx="60" cy="60" r="50" data-level="85" />
+              </svg>
+              <span class="ring-value" data-value="85">0%</span>
+            </div>
+            <span class="ring-label">Problem Solving</span>
+          </div>
+
+          <div class="ring-card">
+            <div class="ring-visual">
+              <svg viewBox="0 0 120 120" class="ring">
+                <circle class="ring-track" cx="60" cy="60" r="50" />
+                <circle class="ring-progress" cx="60" cy="60" r="50" data-level="90" />
+              </svg>
+              <span class="ring-value" data-value="90">0%</span>
+            </div>
+            <span class="ring-label">Collaboration</span>
+          </div>
+
+          <div class="ring-card">
+            <div class="ring-visual">
+              <svg viewBox="0 0 120 120" class="ring">
+                <circle class="ring-track" cx="60" cy="60" r="50" />
+                <circle class="ring-progress" cx="60" cy="60" r="50" data-level="95" />
+              </svg>
+              <span class="ring-value" data-value="95">0%</span>
+            </div>
+            <span class="ring-label">Fast Learning</span>
+          </div>
+        </div>
       </div>
     </section>
 
     <section id="btc" class="section reveal">
-      <div class="container">
-        <article class="panel panel--btc">
-          <div class="panel-header">
-            <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
-            <span class="panel-filename">btc-ticker.sh</span>
-            <span class="live-badge" id="liveBadge"><span class="live-dot" id="liveDot"></span><span id="liveLabel">CONNECTING</span></span>
+      <div class="wrap-narrow">
+        <p class="eyebrow center">Markets</p>
+        <h2 class="section-title center">Bitcoin, live</h2>
+
+        <div class="market-card">
+          <div class="market-top">
+            <span class="market-name">Bitcoin <span class="market-ticker">BTC</span></span>
+            <span class="status-pill" id="liveBadge">
+              <span class="status-dot" id="liveDot"></span>
+              <span id="liveLabel">Connecting</span>
+            </span>
           </div>
-          <div class="panel-body btc-body">
-            <div class="btc-stats">
-              <span class="btc-symbol">₿ BTC / USD</span>
-              <span class="btc-price" id="btcPrice">$ —</span>
-              <span class="btc-change" id="btcChange">
-                <span class="btc-change-arrow" id="btcArrow"></span>
-                <span id="btcChangeValue">—</span>
-                <span class="btc-change-label">24h</span>
-              </span>
-              <p class="btc-updated" id="btcUpdated" aria-live="polite">Connecting to market feed…</p>
-            </div>
-            <div class="btc-chart-wrap">
-              <canvas id="btcChart" role="img" aria-label="Bitcoin price chart, live"></canvas>
-            </div>
+
+          <div class="market-price" id="btcPrice">—</div>
+
+          <div class="market-change" id="btcChange">
+            <span id="btcArrow"></span>
+            <span id="btcChangeValue">—</span>
+            <span class="market-change-label">today</span>
           </div>
-        </article>
+
+          <div class="market-chart">
+            <canvas id="btcChart" role="img" aria-label="Bitcoin price chart, live"></canvas>
+          </div>
+
+          <p class="market-updated" id="btcUpdated" aria-live="polite">Connecting to market feed…</p>
+        </div>
       </div>
     </section>
   </main>
 
-  <footer id="contact" class="site-footer">
-    <div class="container">
-      <article class="panel panel--footer">
-        <div class="panel-header">
-          <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
-          <span class="panel-filename">contact.sh</span>
-        </div>
-        <div class="panel-body contact-body">
-          <p class="prompt-line"><span class="prompt-user">guyk@portfolio</span><span class="prompt-path">~</span><span class="prompt-sign">%</span> ./contact.sh --open</p>
-          <p class="footer-text">Always up for chatting about new ideas and collaborations.</p>
-          <div class="contact-actions">
-            <button class="term-btn term-btn--solid" id="copyEmailBtn" data-email="kassifg@gmail.com" title="Copy email to clipboard">
-              <span aria-hidden="true">⧉</span> <span id="copyEmailLabel">kassifg@gmail.com</span>
-            </button>
-            <a class="term-btn term-btn--ghost" href="mailto:kassifg@gmail.com">✉ open in mail app</a>
-            <a class="term-btn term-btn--ghost" href="https://github.com/GolikSF" target="_blank" rel="noopener noreferrer">⌥ github.com/GolikSF</a>
-          </div>
-          <button id="backToTop" class="back-to-top" aria-label="Back to top">↑ top</button>
-          <p class="footer-bottom">© <span id="year"></span> Golik SF — built with HTML, CSS &amp; vanilla JS.</p>
-        </div>
-      </article>
+  <footer id="contact" class="section footer-section alt-bg">
+    <div class="wrap-narrow center">
+      <p class="eyebrow center">Contact</p>
+      <h2 class="section-title center">Let's build something.</h2>
+      <p class="body-text center">Always up for chatting about new ideas and collaborations.</p>
+      <p class="contact-email">kassifg@gmail.com</p>
+
+      <div class="contact-actions">
+        <button class="btn btn-primary" id="copyEmailBtn" data-email="kassifg@gmail.com">
+          <span id="copyEmailLabel">Copy email</span>
+        </button>
+        <a class="btn btn-secondary" href="mailto:kassifg@gmail.com">Email app</a>
+        <a class="link-quiet" href="https://github.com/GolikSF" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+      </div>
+
+      <button id="backToTop" class="quiet-btn">Back to top</button>
+      <p class="fine-print">© <span id="year"></span> Golik SF</p>
     </div>
   </footer>
 
