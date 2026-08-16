@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Golik SF | Portfolio</title>
+  <meta name="description" content="Personal portfolio of Golik SF - developer, learner, and builder." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <nav class="navbar">
+      <a href="#top" class="logo">Golik<span>SF</span></a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">🌙</button>
+    </nav>
+
+    <div class="hero" id="top">
+      <div class="hero-content">
+        <p class="hero-greeting">Hi, I'm</p>
+        <h1 class="hero-name">Golik SF</h1>
+        <p class="hero-tagline">A curious mind learning to code and build nice products.</p>
+        <div class="hero-buttons">
+          <a href="#about" class="btn btn-primary">About Me</a>
+          <a href="#contact" class="btn btn-outline">Get In Touch</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="about" class="section reveal">
+      <div class="container">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-content">
+          <div class="about-avatar" aria-hidden="true">👋</div>
+          <div class="about-text">
+            <p>
+              I'm currently learning to code and exploring what it takes to build genuinely
+              useful, well-crafted software. I enjoy figuring out how things work under the
+              hood and turning ideas into small, working projects.
+            </p>
+            <p>
+              I'm looking to collaborate on nice products with people who care about quality
+              and creativity. When I'm not coding, I'm probably reading about the next thing
+              I want to learn.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="section reveal">
+      <div class="container">
+        <h2 class="section-title">My Skills</h2>
+        <ul class="skills-grid">
+          <li class="skill-card">
+            <span class="skill-icon">🌐</span>
+            <h3>HTML</h3>
+            <div class="skill-bar"><span style="--level: 80%"></span></div>
+          </li>
+          <li class="skill-card">
+            <span class="skill-icon">🎨</span>
+            <h3>CSS</h3>
+            <div class="skill-bar"><span style="--level: 75%"></span></div>
+          </li>
+          <li class="skill-card">
+            <span class="skill-icon">⚡</span>
+            <h3>JavaScript</h3>
+            <div class="skill-bar"><span style="--level: 65%"></span></div>
+          </li>
+          <li class="skill-card">
+            <span class="skill-icon">🧩</span>
+            <h3>Problem Solving</h3>
+            <div class="skill-bar"><span style="--level: 85%"></span></div>
+          </li>
+          <li class="skill-card">
+            <span class="skill-icon">🤝</span>
+            <h3>Collaboration</h3>
+            <div class="skill-bar"><span style="--level: 90%"></span></div>
+          </li>
+          <li class="skill-card">
+            <span class="skill-icon">📚</span>
+            <h3>Fast Learning</h3>
+            <div class="skill-bar"><span style="--level: 95%"></span></div>
+          </li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer id="contact" class="site-footer">
+    <div class="container footer-content">
+      <h2 class="section-title light">Get In Touch</h2>
+      <p class="footer-text">I'm always open to chatting about new ideas and collaborations.</p>
+      <ul class="contact-list">
+        <li>
+          <a href="mailto:kassifg@gmail.com">
+            <span aria-hidden="true">📧</span> kassifg@gmail.com
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/GolikSF" target="_blank" rel="noopener noreferrer">
+            <span aria-hidden="true">💻</span> github.com/GolikSF
+          </a>
+        </li>
+      </ul>
+      <button id="backToTop" class="back-to-top" aria-label="Back to top">↑</button>
+      <p class="footer-bottom">&copy; <span id="year"></span> Golik SF. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
