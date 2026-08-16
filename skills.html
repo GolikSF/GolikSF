@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Skills | Guy's web</title>
+  <meta name="description" content="What I bring to the table — HTML, CSS, JavaScript, and the habits that go with them." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23111111'/%3E%3Cpath d='M16 7 L8 24 L24 24 Z' stroke='%23E8B84B' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3Ccircle cx='16' cy='7' r='2.6' fill='%23E8B84B'/%3E%3Ccircle cx='8' cy='24' r='2.6' fill='%23E8B84B'/%3E%3Ccircle cx='24' cy='24' r='2.6' fill='%23E8B84B'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="var(--accent-2)" />
+        <stop offset="100%" stop-color="var(--accent)" />
+      </linearGradient>
+      <symbol id="logoMark" viewBox="0 0 32 32">
+        <path d="M16 7 L8 24 L24 24 Z" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+        <circle cx="16" cy="7" r="2.6" fill="currentColor" />
+        <circle cx="8" cy="24" r="2.6" fill="currentColor" />
+        <circle cx="24" cy="24" r="2.6" fill="currentColor" />
+      </symbol>
+    </defs>
+  </svg>
+
+  <nav class="nav" id="nav">
+    <a href="index.html" class="wordmark">
+      <span class="monogram" aria-hidden="true"><svg class="monogram-icon"><use href="#logoMark"></use></svg></span>
+      Guy's web
+    </a>
+
+    <div class="nav-links">
+      <a href="about.html">About</a>
+      <a href="skills.html" class="active">Skills</a>
+      <a href="bitcoin.html">Bitcoin</a>
+      <a href="contact.html">Contact</a>
+    </div>
+
+    <div class="nav-actions">
+      <button class="icon-btn" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">◐</button>
+      <button class="icon-btn menu-btn" id="menuToggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="icon-btn close-btn" id="menuClose" aria-label="Close menu">✕</button>
+    <a href="about.html">About</a>
+    <a href="skills.html" class="active">Skills</a>
+    <a href="bitcoin.html">Bitcoin</a>
+    <a href="contact.html">Contact</a>
+  </div>
+
+  <header class="page-hero">
+    <div class="page-hero-glow" aria-hidden="true"></div>
+    <div class="page-hero-inner">
+      <p class="eyebrow center">Skills</p>
+      <h1 class="page-title">What I bring to the table</h1>
+    </div>
+  </header>
+
+  <main>
+    <section class="section reveal">
+      <div class="wrap">
+        <div class="rings-grid">
+          <div class="ring-card">
+            <div class="ring-visual">
+              <svg viewBox="0 0 120 120" class="ring">
+                <circle class="ring-track" cx="60" cy="60" r="50" />
+                <circle class="ring-progress" cx="60" cy="60" r="50" data-level="80" />
+              </svg>
+              <span class="ring-value" data-value="80">0%</span>
+            </div>
+            <span class="ring-label">HTML</span>
+          </div>
+
+          <div class="ring-card">
+            <div class="ring-visual">
+              <svg viewBox="0 0 120 120" class="ring">
+                <circle class="ring-track" cx="60" cy="60" r="50" />
+                <circle class="ring-progress" cx="60" cy="60" r="50" data-level="75" />
+              </svg>
+              <span class="ring-value" data-value="75">0%</span>
+            </div>
+            <span class="ring-label">CSS</span>
+          </div>
+
+          <div class="ring-card">
+            <div class="ring-visual">
+              <svg viewBox="0 0 120 120" class="ring">
+                <circle class="ring-track" cx="60" cy="60" r="50" />
+                <circle class="ring-progress" cx="60" cy="60" r="50" data-level="65" />
+              </svg>
+              <span class="ring-value" data-value="65">0%</span>
+            </div>
+            <span class="ring-label">JavaScript</span>
+          </div>
+
+          <div class="ring-card">
+            <div class="ring-visual">
+              <svg viewBox="0 0 120 120" class="ring">
+                <circle class="ring-track" cx="60" cy="60" r="50" />
+                <circle class="ring-progress" cx="60" cy="60" r="50" data-level="85" />
+              </svg>
+              <span class="ring-value" data-value="85">0%</span>
+            </div>
+            <span class="ring-label">Problem Solving</span>
+          </div>
+
+          <div class="ring-card">
+            <div class="ring-visual">
+              <svg viewBox="0 0 120 120" class="ring">
+                <circle class="ring-track" cx="60" cy="60" r="50" />
+                <circle class="ring-progress" cx="60" cy="60" r="50" data-level="90" />
+              </svg>
+              <span class="ring-value" data-value="90">0%</span>
+            </div>
+            <span class="ring-label">Collaboration</span>
+          </div>
+
+          <div class="ring-card">
+            <div class="ring-visual">
+              <svg viewBox="0 0 120 120" class="ring">
+                <circle class="ring-track" cx="60" cy="60" r="50" />
+                <circle class="ring-progress" cx="60" cy="60" r="50" data-level="95" />
+              </svg>
+              <span class="ring-value" data-value="95">0%</span>
+            </div>
+            <span class="ring-label">Fast Learning</span>
+          </div>
+        </div>
+
+        <div class="page-nav">
+          <a href="about.html">← About</a>
+          <a href="bitcoin.html" class="next">Bitcoin →</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-row">
+      <a href="index.html" class="wordmark">
+        <span class="monogram" aria-hidden="true"><svg class="monogram-icon"><use href="#logoMark"></use></svg></span>
+        Guy's web
+      </a>
+      <nav class="footer-nav">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="skills.html" class="active">Skills</a>
+        <a href="bitcoin.html">Bitcoin</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+    <p class="fine-print center">© <span class="year"></span> Guy's web</p>
+  </footer>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -253,6 +253,11 @@ button {
   color: var(--text);
 }
 
+.nav-links a.active {
+  color: var(--accent);
+  font-weight: 600;
+}
+
 .nav-actions {
   display: flex;
   align-items: center;
@@ -318,6 +323,10 @@ button {
 
 .mobile-menu a {
   color: var(--text);
+}
+
+.mobile-menu a.active {
+  color: var(--accent);
 }
 
 .close-btn {
@@ -463,6 +472,133 @@ button {
   50% { transform: rotate(45deg) translate(2px, 2px); }
 }
 
+/* ============ Page hero (sub-pages) ============ */
+.page-hero {
+  position: relative;
+  overflow: hidden;
+  padding: 9rem 1.75rem 3rem;
+  text-align: center;
+}
+
+.page-hero-glow {
+  position: absolute;
+  top: -14rem;
+  left: 50%;
+  width: 34rem;
+  height: 34rem;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  filter: blur(70px);
+  background: radial-gradient(circle, var(--glow-a) 0%, transparent 68%);
+  pointer-events: none;
+  animation: drift-a 16s ease-in-out infinite alternate;
+}
+
+.page-hero-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.page-title {
+  font-size: clamp(2.4rem, 6vw, 4rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  text-wrap: balance;
+  opacity: 0;
+  animation: rise 0.9s var(--ease) 0.1s both;
+}
+
+.page-subtitle {
+  font-size: var(--fs-lede);
+  color: var(--text-muted);
+  text-wrap: balance;
+  max-width: 620px;
+  margin: 1rem auto 0;
+  opacity: 0;
+  animation: rise 0.9s var(--ease) 0.24s both;
+}
+
+/* ============ Section overview cards (home) ============ */
+.sections-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+}
+
+.section-card {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease), border-color 0.3s var(--ease);
+}
+
+.section-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow);
+  border-color: var(--accent);
+}
+
+.section-card-eyebrow {
+  font-size: var(--fs-tiny);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.75rem;
+}
+
+.section-card-title {
+  font-size: var(--fs-lg);
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.section-card-desc {
+  color: var(--text-muted);
+  font-size: var(--fs-sm);
+  margin-bottom: 1.25rem;
+}
+
+.section-card-arrow {
+  margin-top: auto;
+  font-weight: 600;
+  font-size: var(--fs-sm);
+  color: var(--accent);
+}
+
+/* ============ Prev/next page nav ============ */
+.page-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding-top: 2.5rem;
+  margin-top: 2.5rem;
+  border-top: 1px solid var(--border);
+}
+
+.page-nav a {
+  font-weight: 600;
+  font-size: var(--fs-sm);
+  color: var(--text-muted);
+  transition: color 0.2s var(--ease);
+}
+
+.page-nav a:hover {
+  color: var(--accent);
+}
+
+.page-nav .next {
+  margin-left: auto;
+}
+
 /* ============ Buttons ============ */
 .btn {
   display: inline-flex;
@@ -510,22 +646,6 @@ button {
 }
 
 .link-quiet:hover {
-  color: var(--accent);
-}
-
-.quiet-btn {
-  background: none;
-  border: none;
-  color: var(--text-muted);
-  font-size: var(--fs-sm);
-  font-weight: 600;
-  cursor: pointer;
-  padding: 0.6rem 1rem;
-  margin: 2.5rem 0 1.5rem;
-  transition: color 0.2s var(--ease);
-}
-
-.quiet-btn:hover {
   color: var(--accent);
 }
 
@@ -721,11 +841,45 @@ button {
   color: var(--text-muted);
 }
 
-/* ============ Footer ============ */
-.footer-section {
-  padding-bottom: 4rem;
+/* ============ Site footer (shared) ============ */
+.site-footer {
+  padding: 3rem 0 3.5rem;
+  border-top: 1px solid var(--border);
+  margin-top: 2rem;
 }
 
+.footer-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.footer-nav {
+  display: flex;
+  gap: 1.75rem;
+  flex-wrap: wrap;
+  font-size: var(--fs-sm);
+  font-weight: 500;
+}
+
+.footer-nav a {
+  color: var(--text-muted);
+  transition: color 0.2s var(--ease);
+}
+
+.footer-nav a:hover {
+  color: var(--text);
+}
+
+.footer-nav a.active {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* ============ Contact ============ */
 .contact-email {
   font-size: var(--fs-md);
   font-weight: 700;
@@ -789,6 +943,15 @@ button {
 
   .market-card {
     padding: 1.75rem 1.5rem;
+  }
+
+  .sections-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-row {
+    flex-direction: column;
+    align-items: flex-start;
   }
 }
 

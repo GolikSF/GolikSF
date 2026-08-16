@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Guy's web | Portfolio</title>
-  <meta name="description" content="Guy's web — a personal portfolio built with HTML, CSS &amp; JavaScript, featuring a live Bitcoin ticker." />
+  <title>Bitcoin | Guy's web</title>
+  <meta name="description" content="A live-updating Bitcoin price chart, built with the Canvas API." />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23111111'/%3E%3Cpath d='M16 7 L8 24 L24 24 Z' stroke='%23E8B84B' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3Ccircle cx='16' cy='7' r='2.6' fill='%23E8B84B'/%3E%3Ccircle cx='8' cy='24' r='2.6' fill='%23E8B84B'/%3E%3Ccircle cx='24' cy='24' r='2.6' fill='%23E8B84B'/%3E%3C/svg%3E" />
   <link rel="stylesheet" href="style.css" />
 </head>
@@ -33,7 +33,7 @@
     <div class="nav-links">
       <a href="about.html">About</a>
       <a href="skills.html">Skills</a>
-      <a href="bitcoin.html">Bitcoin</a>
+      <a href="bitcoin.html" class="active">Bitcoin</a>
       <a href="contact.html">Contact</a>
     </div>
 
@@ -49,64 +49,48 @@
     <button class="icon-btn close-btn" id="menuClose" aria-label="Close menu">✕</button>
     <a href="about.html">About</a>
     <a href="skills.html">Skills</a>
-    <a href="bitcoin.html">Bitcoin</a>
+    <a href="bitcoin.html" class="active">Bitcoin</a>
     <a href="contact.html">Contact</a>
   </div>
 
-  <header class="hero" id="top">
-    <div class="hero-glow hero-glow--a" aria-hidden="true"></div>
-    <div class="hero-glow hero-glow--b" aria-hidden="true"></div>
-
-    <div class="hero-inner">
-      <div class="hero-logo" aria-hidden="true"><svg class="hero-logo-icon"><use href="#logoMark"></use></svg></div>
-      <p class="eyebrow">Portfolio</p>
-      <h1 class="hero-title">Guy's web</h1>
-      <p class="hero-sub">A curious mind learning to code — and build beautiful, useful things.</p>
-      <div class="hero-cta">
-        <a href="about.html" class="btn btn-primary">About me</a>
-        <a href="contact.html" class="btn btn-secondary">Get in touch</a>
-      </div>
+  <header class="page-hero">
+    <div class="page-hero-glow" aria-hidden="true"></div>
+    <div class="page-hero-inner">
+      <p class="eyebrow center">Markets</p>
+      <h1 class="page-title">Bitcoin, live</h1>
     </div>
-
-    <a href="#sections" class="scroll-cue" aria-label="Scroll to section overview">
-      <span></span>
-    </a>
   </header>
 
   <main>
-    <section id="sections" class="section reveal">
-      <div class="wrap">
-        <p class="eyebrow center">Explore</p>
-        <h2 class="section-title center">Find your way around</h2>
+    <section class="section reveal">
+      <div class="wrap-narrow">
+        <div class="market-card">
+          <div class="market-top">
+            <span class="market-name">Bitcoin <span class="market-ticker">BTC</span></span>
+            <span class="status-pill" id="liveBadge">
+              <span class="status-dot" id="liveDot"></span>
+              <span id="liveLabel">Connecting</span>
+            </span>
+          </div>
 
-        <div class="sections-grid">
-          <a href="about.html" class="section-card">
-            <span class="section-card-eyebrow">01 · About</span>
-            <span class="section-card-title">Who I am</span>
-            <span class="section-card-desc">A bit about what I'm learning and the kind of work I want to do.</span>
-            <span class="section-card-arrow">View page →</span>
-          </a>
+          <div class="market-price" id="btcPrice">—</div>
 
-          <a href="skills.html" class="section-card">
-            <span class="section-card-eyebrow">02 · Skills</span>
-            <span class="section-card-title">What I bring</span>
-            <span class="section-card-desc">HTML, CSS, JavaScript, and the habits that go with them.</span>
-            <span class="section-card-arrow">View page →</span>
-          </a>
+          <div class="market-change" id="btcChange">
+            <span id="btcArrow"></span>
+            <span id="btcChangeValue">—</span>
+            <span class="market-change-label">today</span>
+          </div>
 
-          <a href="bitcoin.html" class="section-card">
-            <span class="section-card-eyebrow">03 · Markets</span>
-            <span class="section-card-title">Bitcoin, live</span>
-            <span class="section-card-desc">A live-updating price chart, built with the Canvas API.</span>
-            <span class="section-card-arrow">View page →</span>
-          </a>
+          <div class="market-chart">
+            <canvas id="btcChart" role="img" aria-label="Bitcoin price chart, live"></canvas>
+          </div>
 
-          <a href="contact.html" class="section-card">
-            <span class="section-card-eyebrow">04 · Contact</span>
-            <span class="section-card-title">Say hello</span>
-            <span class="section-card-desc">The fastest ways to reach me, one tap away.</span>
-            <span class="section-card-arrow">View page →</span>
-          </a>
+          <p class="market-updated" id="btcUpdated" aria-live="polite">Connecting to market feed…</p>
+        </div>
+
+        <div class="page-nav">
+          <a href="skills.html">← Skills</a>
+          <a href="contact.html" class="next">Contact →</a>
         </div>
       </div>
     </section>
@@ -122,7 +106,7 @@
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
         <a href="skills.html">Skills</a>
-        <a href="bitcoin.html">Bitcoin</a>
+        <a href="bitcoin.html" class="active">Bitcoin</a>
         <a href="contact.html">Contact</a>
       </nav>
     </div>
