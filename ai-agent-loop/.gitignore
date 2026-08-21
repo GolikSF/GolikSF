@@ -1,0 +1,13 @@
+.env
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+.venv/
+venv/
+
+# Generated at runtime, never committed
+runs/
+workspace/*
+!workspace/.gitkeep
